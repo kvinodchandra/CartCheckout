@@ -1,11 +1,12 @@
-package com.hopeitservice.cartcheckout
+package com.hopeitservice.cartcheckout.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hopeitservice.cartcheckout.R
 
-class MainActivity : AppCompatActivity() {
+class Dashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_dashboard)
     }
 }
