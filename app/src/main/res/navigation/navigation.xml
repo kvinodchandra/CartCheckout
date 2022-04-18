@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/dashbordFragment">
+
+    <fragment
+        android:id="@+id/dashbordFragment"
+        android:name="com.hopeitservice.cartcheckout.dashboard.ProductListFragment"
+        android:label="fragment_dashbord"
+        tools:layout="@layout/fragment_product_list" />
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.hopeitservice.cartcheckout.cart.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.hopeitservice.cartcheckout.checkout.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" />
+
+    <fragment
+        android:id="@+id/checkoutCompleteFragment"
+        android:name="com.hopeitservice.cartcheckout.checkout.CheckoutCompleteFragment"
+        android:label="fragment_checkout_complete"
+        tools:layout="@layout/fragment_checkout_complete" />
+</navigation>

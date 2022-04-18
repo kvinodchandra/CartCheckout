@@ -7,7 +7,7 @@ plugins {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion "31.0.0"
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
         applicationId "com.hopeitservice.cartcheckout"
@@ -34,7 +34,7 @@ android {
     }
 
     buildFeatures{
-        dataBinding true
+        viewBinding true
     }
 }
 
@@ -75,4 +75,12 @@ dependencies {
 
     //Material Design
     implementation "com.google.android.material:material:1.1.0-alpha02"
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    // Room components
+    implementation "androidx.room:room-ktx:$nav_version"
+    kapt "androidx.room:room-compiler:$nav_version"
+    androidTestImplementation "androidx.room:room-testing:$nav_version"
+
 }
