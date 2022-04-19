@@ -15,17 +15,24 @@
         android:id="@+id/cartFragment"
         android:name="com.hopeitservice.cartcheckout.cart.CartFragment"
         android:label="cart_fragment"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cart_to_checkout"
+            app:destination="@id/checkoutCompleteFragment"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
 
-    <fragment
-        android:id="@+id/checkoutFragment"
-        android:name="com.hopeitservice.cartcheckout.checkout.CheckoutFragment"
-        android:label="fragment_checkout"
-        tools:layout="@layout/fragment_checkout" />
 
     <fragment
         android:id="@+id/checkoutCompleteFragment"
         android:name="com.hopeitservice.cartcheckout.checkout.CheckoutCompleteFragment"
         android:label="fragment_checkout_complete"
-        tools:layout="@layout/fragment_checkout_complete" />
+        tools:layout="@layout/fragment_checkout_complete" >
+        <action
+            android:id="@+id/action_checkout_to_dashboard"
+            app:destination="@id/dashbordFragment"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

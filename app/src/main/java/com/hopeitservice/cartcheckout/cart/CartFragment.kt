@@ -1,13 +1,16 @@
 package com.hopeitservice.cartcheckout.cart
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hopeitservice.cartcheckout.R
 import com.hopeitservice.cartcheckout.cart.ViewModel.CartViewModel
 import com.hopeitservice.cartcheckout.cart.ViewModel.CartViewModelFactory
 import com.hopeitservice.cartcheckout.cart.adapter.CartListAdapter
@@ -15,6 +18,8 @@ import com.hopeitservice.cartcheckout.cart.helper.CartApplication
 import com.hopeitservice.cartcheckout.cart.helper.DeleteCartItem
 import com.hopeitservice.cartcheckout.cart.localdatabase.CartModel
 import com.hopeitservice.cartcheckout.databinding.FragmentCartBinding
+import java.util.*
+import kotlin.concurrent.timerTask
 
 class CartFragment : Fragment(), DeleteCartItem {
 
@@ -53,6 +58,19 @@ class CartFragment : Fragment(), DeleteCartItem {
                 totalAmount(it)
             }
         }
+
+        binding.btnCheckout.setOnClickListener{
+            Handler().postDelayed({
+                binding.progressIndicator.visibility = View.GONE
+
+                val direction = CartFragmentDirections.actionCartToCheckout()
+
+                findNavController().navigate(direction)
+            }, 10000)
+            binding.progressIndicator.visibility = View.VISIBLE
+
+        }
+
         // Inflate the layout for this fragment
         return view
     }
@@ -63,7 +81,7 @@ class CartFragment : Fragment(), DeleteCartItem {
             amount = amount + ct.product_price.toFloat()
         }
 
-        binding.totalAmount.text = amount.toString()
+        binding.totalAmount.text = "Toral Amount: "+amount.toString()
     }
 
     override fun removeCartItem(cartModel: CartModel) {

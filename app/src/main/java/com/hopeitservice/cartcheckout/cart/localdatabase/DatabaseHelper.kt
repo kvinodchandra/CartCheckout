@@ -45,7 +45,6 @@ abstract class DatabaseHelper: RoomDatabase() {
                     DatabaseHelper::class.java,
                     "cart_database"
                 )
-                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 // return instance

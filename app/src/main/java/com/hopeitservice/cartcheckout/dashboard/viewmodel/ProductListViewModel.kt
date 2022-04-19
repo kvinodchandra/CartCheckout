@@ -18,7 +18,7 @@ class ProductListViewModel(
     val productListResponse: LiveData<Response<ProductListModel>>
     get() = productlist
 
-    fun getProductListVM()=viewModelScope.launch {
+    fun getProductListVM() = viewModelScope.launch {
         productlist.value = repository.productList()
     }
 }

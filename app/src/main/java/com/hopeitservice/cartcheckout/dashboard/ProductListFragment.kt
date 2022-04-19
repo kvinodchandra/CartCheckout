@@ -1,6 +1,9 @@
 package com.hopeitservice.cartcheckout.dashboard
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hopeitservice.cartcheckout.R
 import com.hopeitservice.cartcheckout.base.BaseFragment
+import com.hopeitservice.cartcheckout.cart.CartFragmentDirections
 import com.hopeitservice.cartcheckout.cart.helper.CartApplication
 import com.hopeitservice.cartcheckout.cart.ViewModel.CartViewModel
 import com.hopeitservice.cartcheckout.cart.ViewModel.CartViewModelFactory
@@ -34,7 +38,9 @@ class ProductListFragment : BaseFragment<ProductListViewModel, FragmentProductLi
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getProductListVM()
+        //Handler().postDelayed({
+            viewModel.getProductListVM()
+      // }, 10000)
 
         viewModel.productListResponse.observe(this, Observer {
             binding.progressIndicator.visibility = View.GONE
@@ -46,6 +52,13 @@ class ProductListFragment : BaseFragment<ProductListViewModel, FragmentProductLi
 
                 is Response.Failure -> {
                     Log.e("ResponseFails", it.toString())
+                    val dialog = AlertDialog.Builder(requireContext())
+                    dialog.setTitle("Network Error")
+                    dialog.setMessage("Something went wrong, please try again later")
+                    dialog.setPositiveButton("Ok"){dialoginterface, which->{
+                        TODO()
+                    }}
+                    dialog.show()
                 }
             }
         })
